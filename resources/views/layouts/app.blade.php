@@ -49,10 +49,10 @@
                             <a href="{{ url('/home') }}" class="{{ Request::is('home') ? 'nav-link px-2 active' : 'nav-link px-2 m-1'}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link px-2"><i class="far fa-edit"></i> New Article</a>
+                            <a href="{{ url('/editor') }}" class="nav-link px-2"><i class="far fa-edit"></i> New Article</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link px-2"><i class="fas fa-cog"></i> Setting</a>
+                            <a href="{{ url('/setting') }}" class="nav-link px-2"><i class="fas fa-cog"></i> Setting</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-2" href="#" role="button">

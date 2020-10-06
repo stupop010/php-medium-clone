@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('editor', [App\Http\Controllers\ArticleController::class, 'index']);
+Route::post('editor', [App\Http\Controllers\ArticleController::class, 'store']);
+
+
+Route::get('setting', function () {
+    return view('setting');
+});
