@@ -4,7 +4,7 @@
             <input
                 id="title"
                 type="text"
-                class="form-control form-control-lg @error('title') is-invalid @enderror"
+                class="form-control form-control-lg"
                 name="title"
                 placeholder="Article title"
                 autocomplete="text"
@@ -12,19 +12,13 @@
                 required
                 autofocus
             />
-            <!-- 
-      @error('title')
-      <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror -->
         </div>
 
         <div class="form-group">
             <input
                 id="subject"
                 type="text"
-                class="form-control form-control-md @error('subject') is-invalid @enderror"
+                class="form-control form-control-md"
                 name="subject"
                 placeholder="What's this article about?"
                 autocomplete="text"
@@ -32,31 +26,19 @@
                 required
                 autofocus
             />
-
-            <!-- @error('subject')
-      <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror -->
         </div>
 
         <div class="form-group">
             <textarea
                 id="body"
                 type="text"
-                class="form-control form-control-md @error('body') is-invalid @enderror"
+                class="form-control form-control-md"
                 name="body"
                 placeholder="Write your article (in markdown)"
                 v-model="article.body"
                 required
                 autofocus
             ></textarea>
-            <!-- 
-      @error('body')
-      <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror -->
         </div>
 
         <div class="form-group">
@@ -73,7 +55,6 @@
         </div>
         <button class="btn btn-lg btn-primary" type="submit">submit</button>
     </form>
-    <!--  @change="" -->
 </template>
 
 <script>
@@ -100,7 +81,10 @@ export default {
                     ...this.article,
                     articleTags: this.articleTags
                 })
-                .then(res => console.log(res))
+                .then(res => {
+                    console.log(res);
+                    // window.location.href = "/home"
+                })
                 .catch(err => console.log(err));
         }
     }

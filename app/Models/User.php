@@ -42,8 +42,8 @@ class User extends Authenticatable
     ];
 
 
-    public function article()
+    public function articles()
     {
-        return $this->hasOne('App\Models\Article');
+        return $this->hasMany(Article::class);
     }
 }

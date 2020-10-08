@@ -7,6 +7,11 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 // Layout
 #app {
     min-height: 100vh;
@@ -83,5 +88,44 @@
         opacity: 1;
         color: $primaryColor;
         text-decoration: underline;
+    }
+}
+
+// Article cards
+
+.article-preview {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    line-height: 1rem;
+}
+
+.article-meta {
+    a {
+        color: $primaryColor;
+        opacity: 0.8;
+        transition: 0.3s;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    span {
+        font-size: 0.7rem;
+    }
+}
+
+.article-content {
+    h2 {
+        margin: 0;
+        font-size: 1.6rem;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+}
+
+.article-footer {
+    p {
+        font-size: 0.8rem;
     }
 }

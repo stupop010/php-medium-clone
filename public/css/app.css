@@ -10899,6 +10899,11 @@ a.text-dark:focus {
   }
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   min-height: 100vh;
   display: grid;
@@ -10965,5 +10970,37 @@ a.text-dark:focus {
   opacity: 1;
   color: #2a9e96;
   text-decoration: underline;
+}
+
+.article-preview {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  line-height: 1rem;
+}
+
+.article-meta a {
+  color: #2a9e96;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.article-meta a:hover {
+  opacity: 1;
+}
+
+.article-meta span {
+  font-size: 0.7rem;
+}
+
+.article-content h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.article-content p {
+  font-size: 1.1rem;
+}
+
+.article-footer p {
+  font-size: 0.8rem;
 }
 
