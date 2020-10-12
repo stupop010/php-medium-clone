@@ -10,11 +10,12 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tag'
+        'tag',
+        'article_id'
     ];
 
     public function article()
     {
-        $this->belongsTo(Tag::class);
+        $this->belongsTo(Article::class);
     }
 }

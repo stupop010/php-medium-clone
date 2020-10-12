@@ -23,6 +23,4 @@ Route::get('editor', [App\Http\Controllers\ArticleController::class, 'index']);
 Route::post('editor', [App\Http\Controllers\ArticleController::class, 'store']);
 
 
-Route::get('setting', function () {
-    return view('setting');
-});
+Route::get('setting', [App\Http\Controllers\SettingController::class, 'index']);

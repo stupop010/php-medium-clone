@@ -23,8 +23,9 @@ class HomeController extends Controller
     public function index()
     {
 
-        $articles = Article::with('user')->get();
+        $articles = Article::with(['user', 'tag'])->get();
 
+        Log::info($articles);
         return view('home', compact('articles'));
     }
 }

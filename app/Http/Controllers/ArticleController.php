@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -30,6 +31,19 @@ class ArticleController extends Controller
             'subject' => $request->input('subject'),
             'body' => $request->input('body'),
         ]);
+
+        $tags = $request->input('articleTags');
+
+        Log::info($article);
+
+        foreach ($tags as $tag) {
+            $createdTag = Tag::create([
+                'tag' => $tag,
+                'article_id' => $article->id
+            ]);
+
+            Log::info($createdTag);
+        };
 
         return $article;
     }

@@ -12,7 +12,7 @@
         <div class="d-flex">
             <div class='w-75'>
 
-                @foreach ($articles ?? '' as $article)
+                @foreach ($articles as $article)
                 <div class="article-preview py-4">
 
                     <div class="d-flex justify-content-between article-meta">
@@ -33,7 +33,11 @@
 
                     <div class="d-flex justify-content-between article-footer">
                         <p>read more...</p>
-                        <div>tags</div>
+                        <div>
+                            @foreach ($article->tag as $tag)
+                            <span>{{$tag->tag}}</span>
+                            @endforeach
+                        </div>
                     </div>
 
                 </div>
