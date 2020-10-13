@@ -34,15 +34,11 @@ class ArticleController extends Controller
 
         $tags = $request->input('articleTags');
 
-        Log::info($article);
-
         foreach ($tags as $tag) {
             $createdTag = Tag::create([
                 'tag' => $tag,
                 'article_id' => $article->id
             ]);
-
-            Log::info($createdTag);
         };
 
         return $article;

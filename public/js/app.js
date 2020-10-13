@@ -1973,6 +1973,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1994,7 +2003,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post("/editor", _objectSpread(_objectSpread({}, this.article), {}, {
         articleTags: this.articleTags
       })).then(function (res) {
-        console.log(res); // window.location.href = "/home"
+        return window.location.href = "/home";
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -37677,6 +37686,7 @@ var render = function() {
             type: "text",
             name: "body",
             placeholder: "Write your article (in markdown)",
+            rows: "8",
             required: "",
             autofocus: ""
           },
@@ -37732,15 +37742,38 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-lg btn-primary", attrs: { type: "submit" } },
-        [_vm._v("submit")]
-      )
+      _c("div", { staticClass: "d-flex w-100  justify-content-between" }, [
+        _c(
+          "ul",
+          { staticClass: "d-flex flex-wrap tag-list" },
+          _vm._l(_vm.articleTags, function(tag) {
+            return _c("li", { key: tag }, [
+              _c("i", { staticClass: "fas fa-times" }),
+              _vm._v(" " + _vm._s(tag))
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "button",
+        { staticClass: "btn btn-lg btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Submit")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

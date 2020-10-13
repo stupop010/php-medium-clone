@@ -36,6 +36,7 @@
                 name="body"
                 placeholder="Write your article (in markdown)"
                 v-model="article.body"
+                rows='8'
                 required
                 autofocus
             ></textarea>
@@ -53,7 +54,15 @@
                 v-model="tag"
             />
         </div>
-        <button class="btn btn-lg btn-primary" type="submit">submit</button>
+        <div class="d-flex w-100  justify-content-between">
+            <ul class="d-flex flex-wrap tag-list">
+               <li v-for="tag in articleTags" :key="tag"><i class="fas fa-times"></i> {{tag}}</li> 
+            </ul>
+            
+            <div>   
+                <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
     </form>
 </template>
 
@@ -81,10 +90,7 @@ export default {
                     ...this.article,
                     articleTags: this.articleTags
                 })
-                .then(res => {
-                    console.log(res);
-                    // window.location.href = "/home"
-                })
+                .then(res => (window.location.href = "/home"))
                 .catch(err => console.log(err));
         }
     }

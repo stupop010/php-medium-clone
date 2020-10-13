@@ -24,3 +24,4 @@ Route::post('editor', [App\Http\Controllers\ArticleController::class, 'store']);
 
 
 Route::get('setting', [App\Http\Controllers\SettingController::class, 'index']);
+Route::patch('setting', [App\Http\Controllers\SettingController::class, 'update']);

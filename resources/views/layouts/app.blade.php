@@ -37,22 +37,22 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="{{ Request::is('home') ? 'nav-link px-2 active' : 'nav-link px-2'}}" href="{{ route('login') }}">{{ __('Sign in') }}</a>
+                            <a class="{{ Request::is('login') ? 'nav-link px-2 active' : 'nav-link px-2'}}" href="{{ route('login') }}">{{ __('Sign in') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link px-2" href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                            <a class="{{ Request::is('register') ? 'nav-link px-2 active' : 'nav-link px-2'}}" href="{{ route('register') }}">{{ __('Sign up') }}</a>
                         </li>
                         @endif
                         @else
                         <li class="nav-item">
-                            <a href="{{ url('/home') }}" class="{{ Request::is('home') ? 'nav-link px-2 active' : 'nav-link px-2 m-1'}}">Home</a>
+                            <a href="{{ url('/home') }}" class="{{ Request::is('home') ? 'nav-link px-2 active' : 'nav-link px-2'}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/editor') }}" class="nav-link px-2"><i class="far fa-edit"></i> New Article</a>
+                            <a href="{{ url('/editor') }}" class="{{ Request::is('editor') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="far fa-edit"></i> New Article</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/setting') }}" class="nav-link px-2"><i class="fas fa-cog"></i> Setting</a>
+                            <a href="{{ url('/setting') }}" class="{{ Request::is('setting') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="fas fa-cog"></i> Setting</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-2" href="#" role="button">

@@ -12,6 +12,10 @@
         <div class="d-flex">
             <div class='w-75'>
 
+                @if (count($articles) === 0)
+                <div>No articles are here... yet.</div>
+                @endif
+
                 @foreach ($articles as $article)
                 <div class="article-preview py-4">
 
