@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -24,8 +25,7 @@ class HomeController extends Controller
     {
 
         $articles = Article::with(['user', 'tag'])->get();
-
-        Log::info($articles);
-        return view('home', compact('articles'));
+        $tags = Tag::all()->take(10);
+        return view('home', compact('articles', 'tags'));
     }
 }

@@ -30,13 +30,16 @@
                         <div>follows</div>
                     </div>
 
-                    <div class="my-3">
-                        <h2 class="m-0">{{ $article->title }}</h2>
-                        <p>{{ $article->subject }}</p>
-                    </div>
+                    <a href='/article/{{ $article->slug }}'>
+                        <div class="my-3">
+                            <h2 class="m-0">{{ $article->title }}</h2>
+                            <p>{{ $article->subject }}</p>
+                        </div>
+                    </a>
 
                     <div class="d-flex justify-content-between article-footer">
-                        <p>read more...</p>
+
+                        <a href='/article/{{ $article->slug }}'>read more...</a>
                         <div>
                             @foreach ($article->tag as $tag)
                             <span>{{$tag->tag}}</span>
@@ -48,7 +51,14 @@
                 @endforeach
 
             </div>
-            <div>popular</div>
+            <div>
+                <div class="p-2 popular-tags">
+                    <h3>Popular Tags</h3>
+                    @foreach ($tags as $tag)
+                    <span>{{$tag->tag}}</span>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </div>

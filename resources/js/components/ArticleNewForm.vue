@@ -39,7 +39,8 @@
                 rows='8'
                 required
                 autofocus
-            ></textarea>
+            >
+            </textarea>
         </div>
 
         <div class="form-group">
@@ -56,7 +57,7 @@
         </div>
         <div class="d-flex w-100  justify-content-between">
             <ul class="d-flex flex-wrap tag-list">
-               <li v-for="tag in articleTags" :key="tag"><i class="fas fa-times"></i> {{tag}}</li> 
+               <li v-for="tag in articleTags" :key="tag"><i v-on:click='handleDeleteTag' class="fas fa-times mr-1"></i> {{tag}}</li> 
             </ul>
             
             <div>   
@@ -83,6 +84,10 @@ export default {
         handleTagChange: function(e) {
             this.articleTags.push(e.target.value);
             this.tag = "";
+        },
+        handleDeleteTag: function(e){
+            let listText = e.target.parentNode.textContent.trim()
+            this.articleTags = this.articleTags.filter(i => i !== listText)
         },
         onSubmit: function() {
             axios

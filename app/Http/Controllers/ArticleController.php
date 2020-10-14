@@ -15,6 +15,13 @@ use Cocur\Slugify\Slugify;
 
 class ArticleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function store(Request $request)
     {
 
@@ -32,16 +39,25 @@ class ArticleController extends Controller
             'body' => $request->input('body'),
         ]);
 
+
+
         $tags = $request->input('articleTags');
 
         foreach ($tags as $tag) {
-            $createdTag = Tag::create([
+            Tag::create([
                 'tag' => $tag,
                 'article_id' => $article->id
             ]);
         };
 
         return $article;
+    }
+
+    public function show($slug)
+    {
+        $article = Article::where('slug', $slug)->with(['user', 'tag'])->firstOrFail();
+
+        return view('article', ['article' => $article]);
     }
 
     public function index()
