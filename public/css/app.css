@@ -10960,6 +10960,27 @@ p {
   font-size: 1.3rem;
 }
 
+.feed-nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  color: black;
+}
+
+.feed-nav a {
+  color: inherit;
+}
+
+.feed-nav a:hover {
+  text-decoration: none;
+}
+
+.feed-active {
+  color: #2a9e96;
+  border-bottom: 1px solid #2a9e96;
+}
+
 .popular-tags {
   background-color: #f3f3f3;
   border-radius: 5px;
@@ -10971,10 +10992,16 @@ p {
   font-size: 1rem;
 }
 
-.popular-tags span {
+.popular-tags a {
   background-color: #818a91;
   border-radius: 10rem;
-  padding: 0.6rem;
+  padding: 0.1rem 0.4rem;
+  margin: 0.1rem;
+  color: white;
+}
+
+.popular-tags a:hover {
+  text-decoration: none;
 }
 
 .auth-link {
@@ -11027,6 +11054,19 @@ p {
 
 .article-footer p {
   font-size: 0.8rem;
+}
+
+.article-footer span {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.3);
+  border-radius: 10rem;
+  padding: 2px 0.3rem;
+  transition: all 0.3s;
+}
+
+.article-footer span:hover {
+  color: #2a9e96;
+  border-color: #2a9e96;
 }
 
 .tag-list {

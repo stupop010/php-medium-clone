@@ -46,7 +46,7 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <a href="{{ url('/home') }}" class="{{ Request::is('home') ? 'nav-link px-2 active' : 'nav-link px-2'}}">Home</a>
+                            <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'nav-link px-2 active' : 'nav-link px-2'}}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/editor') }}" class="{{ Request::is('editor') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="far fa-edit"></i> New Article</a>

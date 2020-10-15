@@ -12,6 +12,19 @@
         <div class="d-flex">
             <div class='w-75'>
 
+                <ul class="feed-nav">
+                    <li class="py-2 mr-3">
+                        <a href="/">Global Feed</a>
+                    </li>
+
+                    @if(Request::get('tag'))
+                    @php $tag = Request::get('tag'); @endphp
+                    <li class="py-2 feed-active">
+                        <a href="/{{$tag}}"># {{$tag}}</a>
+                    </li>
+                    @endif
+                </ul>
+
                 @if (count($articles) === 0)
                 <div>No articles are here... yet.</div>
                 @endif
@@ -27,7 +40,9 @@
                                 <span class='d-block'>{{date("F j, Y", strtotime($article->created_at))}}</span>
                             </div>
                         </div>
-                        <div>follows</div>
+                        <div>
+                            <follow />
+                        </div>
                     </div>
 
                     <a href='/article/{{ $article->slug }}'>
@@ -42,7 +57,9 @@
                         <a href='/article/{{ $article->slug }}'>read more...</a>
                         <div>
                             @foreach ($article->tag as $tag)
-                            <span>{{$tag->tag}}</span>
+                            <a href='/?tag={{ $tag->tag}}'>
+                                <span>{{$tag->tag}}</span>
+                            </a>
                             @endforeach
                         </div>
                     </div>
@@ -51,12 +68,17 @@
                 @endforeach
 
             </div>
-            <div>
+            <div class="w-25 px-4">
                 <div class="p-2 popular-tags">
                     <h3>Popular Tags</h3>
-                    @foreach ($tags as $tag)
-                    <span>{{$tag->tag}}</span>
-                    @endforeach
+                    <div class="d-flex flex-wrap">
+                        @foreach ($tags as $tag)
+
+                        <a href="/?tag={{$tag->tag}}">
+                            {{$tag->tag}}
+                        </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
