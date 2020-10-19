@@ -2068,8 +2068,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['articleId'],
+  data: function data() {
+    return {
+      count: 0
+    };
+  },
   mounted: function mounted() {
     console.log(this);
+    this.count = this.articleId;
+  },
+  methods: {
+    handleClick: function handleClick() {
+      axios.post('/api/follow', {
+        articleId: this.articleId
+      }).then(function (res) {
+        return console.log(res);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
   }
 });
 
@@ -41744,7 +41762,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    hello\n")])
+  return _c(
+    "div",
+    { staticClass: "follow-heart", on: { click: _vm.handleClick } },
+    [
+      _c("i", { staticClass: "fas fa-heart" }),
+      _vm._v(" " + _vm._s(_vm.articleId) + "\n")
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

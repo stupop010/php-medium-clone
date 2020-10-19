@@ -27,4 +27,9 @@ class Article extends Model
     {
         return $this->hasMany(Tag::class);
     }
+
+    public function follow()
+    {
+        return $this->hasMany(Follow::class);
+    }
 }

@@ -11069,6 +11069,20 @@ p {
   border-color: #2a9e96;
 }
 
+.follow-heart {
+  padding: 0.3rem;
+  color: #2a9e96;
+  border: 1px solid #2a9e96;
+  border-radius: 2px;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.follow-heart:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
 .tag-list {
   list-style: none;
   padding: 0;
