@@ -2080,7 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     handleClick: function handleClick() {
-      axios.post('/api/follow', {
+      axios.post('/follow', {
         articleId: this.articleId
       }).then(function (res) {
         return console.log(res);

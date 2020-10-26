@@ -45,7 +45,7 @@
 
             <hr />
 
-            <button type='button' class="btn btn-outline-danger">Or click here to logout.</button>
+            <button type='button' class="btn btn-outline-danger"> <a href="{{ route('logout') }}">Or click here to logout.</a></button>
         </div>
     </div>
 </div>

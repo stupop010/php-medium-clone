@@ -18,7 +18,7 @@
         },
         methods: {
             handleClick: function(){
-                axios.post('/api/follow', {articleId: this.articleId})
+                axios.post('/follow', { articleId: this.articleId })
                     .then(res => console.log(res))
                     .catch(err =>console.log(err))
             }
