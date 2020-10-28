@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -14,23 +15,19 @@ class FollowController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        return 'hello';
-    }
-
     public function store(Request $request)
     {
 
         $articleId = $request->articleId;
         $userId = auth()->user()->id;
-        Log::info($articleId);
-        Log::info($userId);
 
-        $follow = Article::find($articleId);
+        $follow = Follow::where(['article_id' => $articleId, 'user_id' => $userId])->get();
 
-        Log::info($follow);
+        if (count($follow) > 0) {
+            return response()->json(['error' => 'Already Liked'], 403);
+        }
 
-        return 'hellos';
+        $createFollow = Follow::create(['article_id' => $articleId, 'user_id' => $userId]);
+        return $createFollow;
     }
 }

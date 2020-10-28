@@ -31,6 +31,7 @@ class HomeController extends Controller
 
         $articles = [];
 
+        // Fetch articles if queried by tag
         if ($tagQuery) {
             $tagQuery = $request->query('tag');
 
@@ -39,12 +40,13 @@ class HomeController extends Controller
             if (count($articleTags) == 0) {
                 abort(404);
             };
+
             foreach ($articleTags as $tag) {
-                $article = Article::where('id', $tag['article_id'])->with(['user', 'tag'])->get();
+                $article = Article::where('id', $tag['article_id'])->with(['user', 'tag'])->withCount('follow')->get();
                 array_push($articles, $article[0]);
             }
         } else {
-            $articles = Article::with(['user', 'tag'])->get();
+            $articles = Article::with(['user', 'tag'])->withCount('follow')->get();
         }
 
 

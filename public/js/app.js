@@ -2068,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['articleId'],
+  props: ['articleId', 'followCount'],
   data: function data() {
     return {
       count: 0
@@ -2076,14 +2076,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log(this);
-    this.count = this.articleId;
+    this.count = this.followCount;
   },
   methods: {
     handleClick: function handleClick() {
+      var _this = this;
+
       axios.post('/follow', {
         articleId: this.articleId
       }).then(function (res) {
-        return console.log(res);
+        return _this.count++;
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -41767,7 +41769,7 @@ var render = function() {
     { staticClass: "follow-heart", on: { click: _vm.handleClick } },
     [
       _c("i", { staticClass: "fas fa-heart" }),
-      _vm._v(" " + _vm._s(_vm.articleId) + "\n")
+      _vm._v(" " + _vm._s(this.count) + "\n")
     ]
   )
 }

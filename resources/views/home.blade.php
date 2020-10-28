@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div>
-                            <follow article-id="{{$article->id}}" />
+                            <follow article-id="{{$article->id}}" follow-count="{{$article->follow_count}}" />
                         </div>
                     </div>
 

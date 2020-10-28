@@ -24,4 +24,4 @@ Route::get('article/{slug}', [App\Http\Controllers\ArticleController::class, 'sh
 Route::get('setting', [App\Http\Controllers\SettingController::class, 'index']);
 Route::patch('setting', [App\Http\Controllers\SettingController::class, 'update']);
 
-Route::post('follow', [\App\Http\Controllers\FollowController::class, 'store']);
+Route::post('follow', [\App\Http\Controllers\FollowController::class, 'store'])->middleware('auth');
