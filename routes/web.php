@@ -21,7 +21,8 @@ Route::get('editor', [App\Http\Controllers\ArticleController::class, 'index'])->
 Route::post('editor', [App\Http\Controllers\ArticleController::class, 'store'])->middleware('auth');
 Route::get('article/{slug}', [App\Http\Controllers\ArticleController::class, 'show']);
 
-Route::get('setting', [App\Http\Controllers\SettingController::class, 'index']);
-Route::patch('setting', [App\Http\Controllers\SettingController::class, 'update']);
+Route::get('setting', [App\Http\Controllers\ProfileController::class, 'index'])->middleware('auth');
+Route::patch('setting', [App\Http\Controllers\ProfileController::class, 'update'])->middleware('auth');
+Route::get('profile/{user}', [\App\Http\Controllers\ProfileController::class, 'show']);
 
 Route::post('follow', [\App\Http\Controllers\FollowController::class, 'store'])->middleware('auth');

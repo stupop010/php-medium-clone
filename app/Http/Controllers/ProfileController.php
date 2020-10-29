@@ -7,16 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 
-class SettingController extends Controller
+class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         return view('setting', ['user' => auth()->user()]);
+    }
+
+    public function show($user)
+    {
+        $user = User::where('username', $user)->get();
+        $user = $user[0];
+        return view('profile', compact('user'));
     }
 
     public function update(Request $request)

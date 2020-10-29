@@ -36,7 +36,7 @@
                         <div class="d-flex">
                             <img src="{{ url('/images/default-avatar.png') }}" alt='Default avatar' width='35px' />
                             <div class="ml-2">
-                                <a href="#">{{ $article->user->username}}</a>
+                                <a href="/profile/{{ $article->user->username}}">{{ $article->user->username}}</a>
                                 <span class='d-block'>{{date("F j, Y", strtotime($article->created_at))}}</span>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                 @endforeach
 
             </div>
-            <div class="w-25 px-4">
+            <aside class="w-25 px-4">
                 <div class="p-2 popular-tags">
                     <h3>Popular Tags</h3>
                     <div class="d-flex flex-wrap">
@@ -80,7 +80,7 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </aside>
         </div>
     </div>
 </div>
