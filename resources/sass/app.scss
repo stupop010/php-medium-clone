@@ -260,3 +260,12 @@ p {
 #profile-banner {
     background-color: #f3f3f3;
 }
+
+.logout-btn {
+    color: #687077;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}

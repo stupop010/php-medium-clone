@@ -55,7 +55,7 @@
                             <a href="{{ url('/setting') }}" class="{{ Request::is('setting') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="fas fa-cog"></i> Setting</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-2" href="#" role="button">
+                            <a class="nav-link px-2" href="/profile/{{ Auth::user()->username }}" role="button">
                                 {{ Auth::user()->username }}
                             </a>
                         </li>

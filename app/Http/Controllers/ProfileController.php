@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -18,7 +19,10 @@ class ProfileController extends Controller
     {
         $user = User::where('username', $user)->get();
         $user = $user[0];
-        return view('profile', compact('user'));
+
+        $articles = Article::where('user_id', $user->id)->withCount('follow')->get();
+
+        return view('profile', compact('user', 'articles'));
     }
 
     public function update(Request $request)

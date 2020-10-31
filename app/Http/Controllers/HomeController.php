@@ -42,7 +42,7 @@ class HomeController extends Controller
             };
 
             foreach ($articleTags as $tag) {
-                $article = Article::where('id', $tag['article_id'])->with(['user', 'tag'])->withCount('follow')->get();
+                $article = Article::where('id', $tag['article_id'])->withCount('follow')->get();
                 array_push($articles, $article[0]);
             }
         } else {

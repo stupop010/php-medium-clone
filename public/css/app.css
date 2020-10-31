@@ -11134,3 +11134,12 @@ p {
   background-color: #f3f3f3;
 }
 
+.logout-btn {
+  color: #687077;
+}
+
+.logout-btn:hover {
+  color: white;
+  text-decoration: none;
+}
+
