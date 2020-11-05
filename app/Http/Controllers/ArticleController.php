@@ -15,13 +15,6 @@ use Cocur\Slugify\Slugify;
 
 class ArticleController extends Controller
 {
-
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
-
     public function store(Request $request)
     {
 
@@ -50,7 +43,7 @@ class ArticleController extends Controller
             ]);
         };
 
-        return $article;
+        return redirect('/');
     }
 
     public function show($slug)

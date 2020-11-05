@@ -2015,6 +2015,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2042,7 +2050,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post("/editor", _objectSpread(_objectSpread({}, this.article), {}, {
         articleTags: this.articleTags
       })).then(function (res) {
-        return window.location.href = "/home";
+        return window.location.href = "/";
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -41718,7 +41726,7 @@ var render = function() {
                 staticClass: "fas fa-times mr-1",
                 on: { click: _vm.handleDeleteTag }
               }),
-              _vm._v(" " + _vm._s(tag))
+              _vm._v("\n                " + _vm._s(tag) + "\n            ")
             ])
           }),
           0
@@ -41738,7 +41746,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-lg btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
+        [_vm._v("\n                Submit\n            ")]
       )
     ])
   }

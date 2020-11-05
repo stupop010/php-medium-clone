@@ -32,4 +32,9 @@ class Article extends Model
     {
         return $this->hasMany(Follow::class);
     }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

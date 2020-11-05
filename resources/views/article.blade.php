@@ -19,8 +19,15 @@
 
     <hr>
 
-    <div>
-        comments
+    <div class="comment-container mt-5">
+        <div class="p-4 border rounded-top">
+            <form class="d-flex flex-column">
+                <textarea placeholder="Write a comment..." rows="3" class="p-2"></textarea>
+                <div class="align-self-end">
+                    <button class="comment-btn">Post Comment</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

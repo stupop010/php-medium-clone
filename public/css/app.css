@@ -11143,3 +11143,29 @@ p {
   text-decoration: none;
 }
 
+.comment-container {
+  width: 510px;
+  margin: auto;
+}
+
+.comment-btn {
+  padding: 0.3rem 0.8rem;
+  margin-top: 1rem;
+  border-radius: 2px;
+  background: #2a9e96;
+  color: white;
+  border: 1px solid #2a9e96;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.comment-btn:hover {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 530px) {
+  .comment-container {
+    width: 100%;
+  }
+}
+

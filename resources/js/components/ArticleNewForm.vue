@@ -36,7 +36,7 @@
                 name="body"
                 placeholder="Write your article (in markdown)"
                 v-model="article.body"
-                rows='8'
+                rows="8"
                 required
                 autofocus
             >
@@ -57,11 +57,19 @@
         </div>
         <div class="d-flex w-100  justify-content-between">
             <ul class="d-flex flex-wrap tag-list">
-               <li v-for="tag in articleTags" :key="tag"><i v-on:click='handleDeleteTag' class="fas fa-times mr-1"></i> {{tag}}</li> 
+                <li v-for="tag in articleTags" :key="tag">
+                    <i
+                        v-on:click="handleDeleteTag"
+                        class="fas fa-times mr-1"
+                    ></i>
+                    {{ tag }}
+                </li>
             </ul>
-            
-            <div>   
-                <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+
+            <div>
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Submit
+                </button>
             </div>
         </div>
     </form>
@@ -85,9 +93,9 @@ export default {
             this.articleTags.push(e.target.value);
             this.tag = "";
         },
-        handleDeleteTag: function(e){
-            let listText = e.target.parentNode.textContent.trim()
-            this.articleTags = this.articleTags.filter(i => i !== listText)
+        handleDeleteTag: function(e) {
+            let listText = e.target.parentNode.textContent.trim();
+            this.articleTags = this.articleTags.filter(i => i !== listText);
         },
         onSubmit: function() {
             axios
@@ -95,7 +103,7 @@ export default {
                     ...this.article,
                     articleTags: this.articleTags
                 })
-                .then(res => (window.location.href = "/home"))
+                .then(res => (window.location.href = "/"))
                 .catch(err => console.log(err));
         }
     }
