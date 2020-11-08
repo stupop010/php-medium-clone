@@ -26,3 +26,5 @@ Route::patch('setting', [App\Http\Controllers\ProfileController::class, 'update'
 Route::get('profile/{user}', [\App\Http\Controllers\ProfileController::class, 'show']);
 
 Route::post('follow', [\App\Http\Controllers\FollowController::class, 'store'])->middleware('auth');
+
+Route::post('comment', [\App\Http\Controllers\CommentController::class, 'store'])->middleware(('auth'));
