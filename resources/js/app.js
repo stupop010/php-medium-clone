@@ -28,6 +28,7 @@ Vue.component(
     require("./components/ArticleDisplay").default
 );
 Vue.component("follow", require("./components/Follow").default);
+Vue.component("comment", require("./components/Comment").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

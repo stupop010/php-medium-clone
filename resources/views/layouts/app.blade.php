@@ -73,6 +73,8 @@
     </div>
 </body>
 
+@yield('page-scripts')
+
 </html>
 
 

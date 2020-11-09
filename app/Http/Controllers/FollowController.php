@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Follow;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class FollowController extends Controller
 {
