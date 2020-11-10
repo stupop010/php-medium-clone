@@ -15,10 +15,11 @@ class CommentController extends Controller
         $articleId = (int)$request->articleId;
         $userId = auth()->user()->id;
 
-        log::info($articleId);
+        Comment::create(['comment' => $comment, 'article_id' => $articleId, 'user_id' => $userId]);
 
-        $comment = Comment::create(['comment' => $comment, 'article_id' => $articleId, 'user_id' => $userId]);
+        $comments = Comment::paginate(2);
 
-        log::info($comment);
+        log::info($comments);
+        return $comments;
     }
 }
