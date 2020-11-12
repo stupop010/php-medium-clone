@@ -31,6 +31,7 @@ Vue.component(
 );
 Vue.component("follow", require("./components/Follow").default);
 Vue.component("comment", require("./components/Comment").default);
+Vue.component("pagination", require("./components/Pagination").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

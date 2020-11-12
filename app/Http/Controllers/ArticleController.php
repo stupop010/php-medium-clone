@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\User;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -49,8 +50,9 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->with(['user', 'tag'])->firstOrFail();
+        $comments = Comment::paginate(2);
 
-        return view('article', ['article' => $article]);
+        return view('article', compact('article', 'comments'));
     }
 
     public function index()

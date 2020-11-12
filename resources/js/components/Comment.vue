@@ -12,14 +12,23 @@
         </div>
 
         <div>
-            <b-pagination
-                v-model="currentPage"
-                :total-rows="totalPages"
-                :per-page="perPage"
-                first-number
-                last-number
-            ></b-pagination>
-            hello
+            <div class="text-center py-3" v-if='!paginationData.data'>
+                <b-spinner label="Spinning"></b-spinner>
+            </div>
+
+            <div>
+                <div v-for="comment in paginationData.data" :key="comment.id">
+                    {{ comment.id }}
+                </div>
+
+                <pagination 
+                    
+                    :paginationData="paginationData" 
+                    :url='url' 
+                    @update-pagination='updatePagination'
+                    @update-loading='updateLoading'>
+                </pagination>
+            </div>
         </div>
     </div>
 </template>
@@ -31,41 +40,15 @@
             return {
                 paginationData: {},
                 comment: '',
+                url: '/comment'
             }
         },
         methods: {
-            onSubmit: function(){
-                axios.post('/comment', {
-                    comment: this.comment,
-                    articleId: this.articleId
-                }).then((res) => {
-                    this.paginationData = res.data
-                }).catch((err) => {
-                    console.log(err)
-                })
-            }
-        }, 
-        watch: {
-            currentPage(newVal, oldVal){
-                console.log(newVal, oldVal)
-            }
-        },
-        computed: {
-            currentPage: {
-                get(){
-                    return this.paginationData.current_page;
-                },
-                set(value){
-                    console.log(value)
-                }
-            }, 
-            totalPages(){
-                return this.paginationData.total;
+            updatePagination: function(data, loading){
+                this.paginationData = data
             },
-            perPage(){
-                return this.paginationData.per_page;
-            }
         }
+    
     };
 </script>
 

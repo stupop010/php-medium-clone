@@ -22,4 +22,11 @@ class CommentController extends Controller
         log::info($comments);
         return $comments;
     }
+
+    public function index()
+    {
+        $comments = Comment::paginate(2);
+
+        return $comments;
+    }
 }
