@@ -16,17 +16,22 @@
                 <b-spinner label="Spinning"></b-spinner>
             </div>
 
-            <div>
-                <div v-for="comment in paginationData.data" :key="comment.id">
-                    {{ comment.id }}
+            <div> 
+                <div v-for="comment in paginationData.data" :key="comment.id" class="border rounded my-2">
+                    <div class="p-3">
+                        {{ comment.comment }}
+                    </div>
+
+                    <div class="border-top px-3 py-1">
+                        {{ comment.comment }}
+                    </div>
                 </div>
 
                 <pagination 
-                    
-                    :paginationData="paginationData" 
+                    :pagination-data="paginationData" 
                     :url='url' 
                     @update-pagination='updatePagination'
-                    @update-loading='updateLoading'>
+                    :fetch-data='articleId'>
                 </pagination>
             </div>
         </div>

@@ -6,15 +6,16 @@
                 :per-page="perPage"
                 first-number
                 last-number
+                class="justify-content-center"
             ></b-pagination>
         </div>
 </template>
 
 <script>
     export default {
-        props: ['articleId',  'paginationData', 'url'],
+        props: ['paginationData', 'url', 'fetchData'],
         mounted: function(){
-            axios.get(this.url)
+            axios.get(this.url, {params: {data: this.fetchData}})
                 .then(({data}) => this.$emit('update-pagination', data, false))
                 .catch(err => console.log(err))
         },
