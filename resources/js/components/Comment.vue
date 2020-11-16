@@ -22,8 +22,14 @@
                         {{ comment.comment }}
                     </div>
 
-                    <div class="border-top px-3 py-1">
-                        {{ comment.comment }}
+                    <div class="border-top px-3 py-2 comment-user">
+                        <img src='/images/default-avatar.png' width="25px">
+                        <a :href="`/profile/${comment.user.username}`" class="ml-1">
+                            {{ comment.user.username}}
+                        </a>
+                        <span>
+                            {{new Date(comment.created_at).toLocaleDateString(undefined, { year: 'numeric',day: 'numeric', month: 'long'})}}
+                        </span>
                     </div>
                 </div>
 
@@ -31,7 +37,9 @@
                     :pagination-data="paginationData" 
                     :url='url' 
                     @update-pagination='updatePagination'
-                    :fetch-data='articleId'>
+                    :fetch-data='articleId'
+                    totalPerPage=25
+                    >
                 </pagination>
             </div>
         </div>
@@ -49,9 +57,17 @@
             }
         },
         methods: {
-            updatePagination: function(data, loading){
+            updatePagination: function(data){
                 this.paginationData = data
             },
+            onSubmit: function(){
+                axios.post('/comment', {comment: this.comment, articleId: this.articleId})
+                    .then(({data}) => {
+                        this.updatePagination(data)
+                        this.comment = ''
+                        })
+                    .catch(err => console.log(err, 'hello'))
+            }
         }
     
     };

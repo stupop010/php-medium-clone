@@ -17,11 +17,14 @@
 <div class="container page">
     <article-display :article="{{ json_encode($article->body) }}"></article-display>
 
+    @auth
     <hr>
 
     <div class="comment-container mt-5">
         <comment article-id="{{$article->id}}"></comment>
     </div>
+    @endauth
+
 </div>
 
 @endsection

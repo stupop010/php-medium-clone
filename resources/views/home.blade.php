@@ -67,6 +67,10 @@
                 </div>
                 @endforeach
 
+                <div class="d-flex justify-content-center mt-3">
+                    {{$articles->links()}}
+                </div>
+
             </div>
             <aside class="w-25 px-4">
                 <div class="p-2 popular-tags">
