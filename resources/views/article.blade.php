@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class='article-header py-4'>
+<section class='article-header py-4'>
     <div class="container py-2">
         <h1>{{$article->title}}</h1>
         <div class="d-flex align-items-center mt-4">
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <div class="container page">
     <article-display :article="{{ json_encode($article->body) }}"></article-display>

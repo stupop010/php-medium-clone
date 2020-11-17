@@ -45,7 +45,11 @@
 
             <hr />
 
-            <a href="{{ route('logout') }}" class="btn btn-outline-danger logout-btn">Or click here to logout.</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-outline-danger logout-btn">Or click here to logout.</button>
+            </form>
+
         </div>
     </div>
     @endsection

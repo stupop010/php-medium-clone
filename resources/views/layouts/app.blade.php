@@ -26,44 +26,46 @@
 
 <body>
     <div id="app">
-        <nav class="py-2 bg-white" id='navbar'>
-            <div class="container d-flex justify-content-between align-items-baseline">
-                <a class="logo" href="{{ url('/') }}">
-                    Chimmi
-                </a>
+        <header>
+            <nav class="py-2 bg-white" id='navbar'>
+                <div class="container d-flex justify-content-between align-items-baseline">
+                    <a class="logo" href="{{ url('/') }}">
+                        Chimmi
+                    </a>
 
-                <div>
-                    <ul class="d-flex nav ">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="{{ Request::is('login') ? 'nav-link px-2 active' : 'nav-link px-2'}}" href="{{ route('login') }}">{{ __('Sign in') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="{{ Request::is('register') ? 'nav-link px-2 active' : 'nav-link px-2'}}" href="{{ route('register') }}">{{ __('Sign up') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item">
-                            <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'nav-link px-2 active' : 'nav-link px-2'}}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/editor') }}" class="{{ Request::is('editor') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="far fa-edit"></i> New Article</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/setting') }}" class="{{ Request::is('setting') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="fas fa-cog"></i> Setting</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-2" href="/profile/{{ Auth::user()->username }}" role="button">
-                                {{ Auth::user()->username }}
-                            </a>
-                        </li>
-                        @endguest
-                    </ul>
+                    <div>
+                        <ul class="d-flex nav ">
+                            <!-- Authentication Links -->
+                            @guest
+                            <li class="nav-item">
+                                <a class="{{ Request::is('login') ? 'nav-link px-2 active' : 'nav-link px-2'}}" href="{{ route('login') }}">{{ __('Sign in') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="{{ Request::is('register') ? 'nav-link px-2 active' : 'nav-link px-2'}}" href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                            </li>
+                            @endguest
+
+                            @auth
+                            <li class="nav-item">
+                                <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'nav-link px-2 active' : 'nav-link px-2'}}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/editor') }}" class="{{ Request::is('editor') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="far fa-edit"></i> New Article</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/setting') }}" class="{{ Request::is('setting') ? 'nav-link px-2 active' : 'nav-link px-2'}}"><i class="fas fa-cog"></i> Setting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-2" href="/profile/{{ Auth::user()->username }}" role="button">
+                                    {{ Auth::user()->username }}
+                                </a>
+                            </li>
+                            @endauth
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
 
         <main class="bg-white">
             @yield('content')
@@ -73,19 +75,4 @@
     </div>
 </body>
 
-@yield('page-scripts')
-
 </html>
-
-
-
-<!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-@csrf
-</form> -->
-
-<!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-document.getElementById('logout-form').submit();">
-{{ __('Logout') }}
-</a>
-</div> -->

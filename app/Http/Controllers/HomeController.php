@@ -42,13 +42,13 @@ class HomeController extends Controller
             };
 
             foreach ($articleTags as $tag) {
+                // Fetch all articles by tag
                 $article = Article::where('id', $tag['article_id'])->orderBy('created_at', 'DESC')->withCount('follow')->paginate(5);
                 array_push($articles, $article[0]);
             }
         } else {
             $articles = Article::with(['user', 'tag'])->orderBy('created_at', 'DESC')->withCount('follow')->paginate(5);
         }
-
 
         return view('home', compact('articles', 'tags'));
     }

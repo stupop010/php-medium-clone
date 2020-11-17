@@ -6,16 +6,20 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-
-
 
 use Cocur\Slugify\Slugify;
 
 class ArticleController extends Controller
 {
+    public function index()
+    {
+        return view('editor');
+    }
+
     public function store(Request $request)
     {
 
@@ -50,13 +54,22 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->with(['user', 'tag'])->firstOrFail();
-        $comments = Comment::paginate(2);
 
-        return view('article', compact('article', 'comments'));
+        return view('article', compact('article'));
     }
 
-    public function index()
+    public function destroy(Request $request)
     {
-        return view('editor');
+        $userId = auth()->user()->id;
+        $articleId = $request->articleId;
+
+        Follow::where('article_id', $articleId)->delete();
+        Comment::where('article_id', $articleId)->delete();
+        Tag::where('article_id', $articleId)->delete();
+        Article::destroy($request->articleId);
+
+        $articles = Article::where('user_id', $userId)->orderBy('created_at', 'DESC')->withCount('follow')->get();
+
+        return $articles;
     }
 }

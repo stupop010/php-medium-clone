@@ -67,9 +67,12 @@
                 </div>
                 @endforeach
 
+
+                @if (!is_array($articles))
                 <div class="d-flex justify-content-center mt-3">
                     {{$articles->links()}}
                 </div>
+                @endif
 
             </div>
             <aside class="w-25 px-4">

@@ -1,6 +1,6 @@
 <template>
-    <div v-html="compiledMarkdown">
-    </div>
+    <article v-html="compiledMarkdown">
+    </article>
 </template>
 
 <script>

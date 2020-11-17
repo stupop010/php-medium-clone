@@ -11151,8 +11151,18 @@ p {
   background-color: #f3f3f3;
 }
 
+.deleteBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 1.1rem;
+}
+
+.deleteBtn:focus {
+  outline: none;
+}
+
 .logout-btn {
-  color: #687077;
+  color: #dc3545;
 }
 
 .logout-btn:hover {
