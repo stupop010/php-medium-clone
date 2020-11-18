@@ -27,11 +27,13 @@
             hideModal: function(){
                 this.$refs['deleteArticle'].hide()
             },
-            handleDelete: function(e){
-                console.log(this.$refs['delete'])
-                // axios.delete(`/article/${this.slug}`, {data: {'articleId': this.articleId}})
-                //     .then(res => console.log(res, 'hello'))
-                //     .catch(err => console.log(err))
+            handleDelete: function(){
+                axios.delete(`/article/${this.slug}`, {data: {'articleId': this.articleId}})
+                    .then(({data} )=> {
+                        this.$emit('update-articles', data)
+                        this.$refs['deleteArticle'].hide()
+                        })
+                    .catch(err => console.log(err))
             }
         }
     };

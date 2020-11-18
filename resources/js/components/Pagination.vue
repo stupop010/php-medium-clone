@@ -15,7 +15,6 @@
     export default {
         props: ['paginationData', 'url', 'fetchData', 'totalPerPage'],
         mounted: function(){
-            console.log(this)
             axios.get(this.url, {params: {data: this.fetchData}})
                 .then(({data}) => this.$emit('update-pagination', data))
                 .catch(err => console.log(err))

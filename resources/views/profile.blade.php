@@ -13,7 +13,7 @@
         <div>No articles are here... yet.</div>
         @endif
 
-        <profile articles="{{  $articles }}"></profile>
+        <profile articles="{{ $articles }}" :user="{{ Auth::user() ? Auth::user() : json_encode(new class{}) }}"></profile>
     </div>
 </div>
 @endsection

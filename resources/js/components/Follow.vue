@@ -13,7 +13,6 @@ export default {
         };
     },
     mounted: function() {
-        console.log(this);
         this.count = this.followCount;
     },
     methods: {

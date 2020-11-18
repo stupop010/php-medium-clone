@@ -22,12 +22,10 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-
         $slugify = new Slugify();
         $userId = Auth::id();
         $random32bitString = base_convert(rand() * pow(36, 6) | 0, 10, 32);
         $slug = $slugify->slugify($request->input('title')) . '-' . $random32bitString;
-
 
         $user = User::find($userId);
         $article = $user->articles()->create([
@@ -36,8 +34,6 @@ class ArticleController extends Controller
             'subject' => $request->input('subject'),
             'body' => $request->input('body'),
         ]);
-
-
 
         $tags = $request->input('articleTags');
 
@@ -68,7 +64,7 @@ class ArticleController extends Controller
         Tag::where('article_id', $articleId)->delete();
         Article::destroy($request->articleId);
 
-        $articles = Article::where('user_id', $userId)->orderBy('created_at', 'DESC')->withCount('follow')->get();
+        $articles = Article::where('user_id', $userId)->with(['user', 'tag'])->orderBy('created_at', 'DESC')->withCount('follow')->get();
 
         return $articles;
     }

@@ -15,7 +15,7 @@
                         <follow :article-id="article.id" :follow-count="article.follow_count" />
                     </div>
 
-                    <div class="ml-1">
+                    <div class="ml-1" v-if="article.user.id === user.id">
                         <delete-article-modal @update-articles='updateArticles' :article-id="article.id" :title="article.title" :slug="article.slug"></delete-article-modal>
                     </div>
                 </div>
@@ -43,19 +43,19 @@
 
 <script>
     export default {
-        props: ['articles'],
+        props: ['articles', 'user'],
         data: function(){
             return {    
                 articlesData: []
             }
         },
         mounted: function(){
+            console.log(this)
             this.articlesData = JSON.parse(this.articles)
             },
         methods: {
             updateArticles: function(articles){
-                console.log(articles)
-                this.articlesData = JSON.parse(articles)
+                this.articlesData = articles
             }
         }
     };
