@@ -21,7 +21,7 @@
     <hr>
 
     <div class="comment-container mt-5">
-        <comment article-id="{{$article->id}}"></comment>
+        <comment article-id="{{$article->id}}" :user="{{ Auth::user() ? Auth::user() : json_encode(new class{}) }}"></comment>
     </div>
     @endauth
 

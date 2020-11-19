@@ -57,7 +57,7 @@
         </div>
         <div class="d-flex w-100  justify-content-between">
             <ul class="d-flex flex-wrap tag-list">
-                <li json_encode :key="tag">
+                <li v-for="tag in articleTags" :key="tag">
                     <i
                         v-on:click="handleDeleteTag"
                         class="fas fa-times mr-1"

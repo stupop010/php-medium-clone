@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="ml-1" v-if="article.user.id === user.id">
-                        <delete-article-modal @update-articles='updateArticles' :article-id="article.id" :title="article.title" :slug="article.slug"></delete-article-modal>
+                        <delete-modal @update-data='updateArticles' :data-id="article.id" :title="article.title" :url='`/article/${article.slug}`'></delete-modal>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,6 @@
             }
         },
         mounted: function(){
-            console.log(this)
             this.articlesData = JSON.parse(this.articles)
             },
         methods: {

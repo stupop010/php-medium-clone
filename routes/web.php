@@ -28,5 +28,6 @@ Route::get('profile/{user}', [\App\Http\Controllers\ProfileController::class, 's
 
 Route::post('follow', [\App\Http\Controllers\FollowController::class, 'store'])->middleware('auth');
 
-Route::post('comment', [\App\Http\Controllers\CommentController::class, 'store'])->middleware(('auth'));
+Route::post('comment', [\App\Http\Controllers\CommentController::class, 'store'])->middleware('auth');
 Route::get('comment', [\App\Http\Controllers\CommentController::class, 'index'])->middleware('auth');
+Route::delete('comment', [\App\Http\Controllers\CommentController::class, 'destroy'])->middleware('auth');

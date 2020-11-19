@@ -56,15 +56,9 @@ class ArticleController extends Controller
 
     public function destroy(Request $request)
     {
-        $userId = auth()->user()->id;
-        $articleId = $request->articleId;
+        Article::destroy($request->dataId);
 
-        Follow::where('article_id', $articleId)->delete();
-        Comment::where('article_id', $articleId)->delete();
-        Tag::where('article_id', $articleId)->delete();
-        Article::destroy($request->articleId);
-
-        $articles = Article::where('user_id', $userId)->with(['user', 'tag'])->orderBy('created_at', 'DESC')->withCount('follow')->get();
+        $articles = Article::getArticlesWithFollows(auth()->user()->id);
 
         return $articles;
     }

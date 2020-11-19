@@ -60,6 +60,92 @@ p {
     margin-top: 2rem;
 }
 
+#hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 550px) {
+    #nav-list {
+        display: none;
+    }
+
+    #hamburger {
+        display: block;
+    }
+}
+
+// Menu
+
+#menu {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    transform: translateX(-100%);
+}
+
+.menu-content {
+    max-width: 350px;
+    height: 100%;
+    background: #f3f3f3;
+}
+
+#closeMenu {
+    cursor: pointer;
+}
+
+.menu-open {
+    animation: slidein 0.3s ease-in-out 0s forwards;
+}
+
+.menu-close {
+    animation: slideout 0.3s ease-in-out 0s forwards;
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+    transition: 0.3s;
+
+    li {
+        margin-top: 0.5rem;
+        border-bottom: 1px solid #a9aaaa;
+
+        &:hover {
+            border-bottom-color: #222323;
+        }
+
+        a {
+            padding-left: 0;
+        }
+    }
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideout {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
 //  Home page
 #home-banner {
     background-color: $primaryColor;

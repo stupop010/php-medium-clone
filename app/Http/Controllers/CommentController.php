@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+
 
 class CommentController extends Controller
 {
@@ -23,5 +22,10 @@ class CommentController extends Controller
     public function index(Request $request)
     {
         return Comment::getCommentPagination($request->data);
+    }
+
+    public function destroy(Request $request)
+    {
+        return Comment::destroy($request->dataId);
     }
 }

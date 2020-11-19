@@ -34,8 +34,8 @@ Vue.component("comment", require("./components/Comment").default);
 Vue.component("pagination", require("./components/Pagination").default);
 Vue.component("profile", require("./components/Profile").default);
 Vue.component(
-    "delete-article-modal",
-    require("./components/DeleteArticleModal").default
+    "delete-modal",
+    require("./components/DeleteModal").default
 );
 
 /**

@@ -20,7 +20,7 @@ class ProfileController extends Controller
         $user = User::where('username', $user)->get();
         $user = $user[0];
 
-        $articles = Article::where('user_id', $user->id)->with(['user', 'tag'])->orderBy('created_at', 'DESC')->withCount('follow')->get();
+        $articles = Article::getArticlesWithFollows($user->id);
 
         return view('profile', compact('user', 'articles'));
     }

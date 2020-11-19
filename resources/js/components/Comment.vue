@@ -22,14 +22,19 @@
                         {{ comment.comment }}
                     </div>
 
-                    <div class="border-top px-3 py-2 comment-user">
-                        <img src='/images/default-avatar.png' width="25px">
-                        <a :href="`/profile/${comment.user.username}`" class="ml-1">
-                            {{ comment.user.username}}
-                        </a>
-                        <span>
-                            {{new Date(comment.created_at).toLocaleDateString(undefined, { year: 'numeric',day: 'numeric', month: 'long'})}}
-                        </span>
+                    <div class="border-top px-3 py-2 comment-user d-flex justify-content-between">
+                        <div>
+                            <img src='/images/default-avatar.png' width="25px">
+                            <a :href="`/profile/${comment.user.username}`" class="ml-1">
+                                {{ comment.user.username}}
+                            </a>
+                            <span>
+                                {{new Date(comment.created_at).toLocaleDateString(undefined, { year: 'numeric',day: 'numeric', month: 'long'})}}
+                            </span>
+                        </div>
+                        <div v-if="comment.user.id === user.id">
+                            <delete-modal @update-data='updatePagination' title='this comment' :data-id='comment.id' url="/comment"></delete-modal>
+                        </div>
                     </div>
                 </div>
 
@@ -47,8 +52,9 @@
 </template>
 
 <script>
+import DeleteModal from './DeleteModal.vue';
     export default {
-        props: ['articleId'],
+        props: ['articleId', 'user'],
         data() {
             return {
                 paginationData: {},

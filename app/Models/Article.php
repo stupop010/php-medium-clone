@@ -18,6 +18,11 @@ class Article extends Model
         'user_id'
     ];
 
+    public static function getArticlesWithFollows($id)
+    {
+        return  Article::where('user_id', $id)->with(['user', 'tag'])->orderBy('created_at', 'DESC')->withCount('follow')->get();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
